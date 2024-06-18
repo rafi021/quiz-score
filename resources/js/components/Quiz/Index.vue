@@ -2,6 +2,7 @@
     <div class="flex justify-between p-6 align-items-center">
         <h4 class="text-lg font-bold">Quiz List</h4>
         <router-link
+            v-show="user.isAdmin"
             :to="{ name: 'quiz.create' }"
             active-class="border-b-2 border-indigo-400"
             class="inline-flex items-center px-4 py-2 font-medium leading-5 text-white transition duration-150 ease-in-out rounded-lg bg-amber-400 texts focus:outline-none focus:border-indigo-700"
@@ -202,11 +203,13 @@
 import { ref, onMounted } from "vue";
 import { TailwindPagination } from "laravel-vue-pagination";
 import useQuiz from "@/composables/quiz";
+import useAuth from "@/composables/auth";
 
 const orderColumn = ref("quiz_date");
 const orderDirection = ref("desc");
 
 const { quizzes, getQuizzes, deleteQuiz } = useQuiz();
+const { user, processing, logout, getUser } = useAuth();
 
 const updateOrdering = (column) => {
     orderColumn.value = column;
@@ -215,6 +218,7 @@ const updateOrdering = (column) => {
 };
 
 onMounted(() => {
+    getUser();
     getQuizzes();
 });
 </script>
