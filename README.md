@@ -37,6 +37,11 @@ In this project, there are two profiles one is admin profile and another one is 
 
 5. Setup MYSQL from .env and use Sqlite (already stored in database folder named -- database.sqlite)
 -- to use sqlite you must enable ```pdo_sqlite``` from php.ini 
+create a database file named database.sqlite in the database folder
+fro sqlite
+database
+    |-- database.sqlite
+
 for MySQL uncomment this lines
 
 ```
