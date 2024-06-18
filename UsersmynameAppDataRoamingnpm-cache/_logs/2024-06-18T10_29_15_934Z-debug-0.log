@@ -31,3 +31,12 @@
 30 timing npm:load Completed in 45ms
 31 silly logfile done cleaning log files
 32 http fetch GET 200 https://registry.npmjs.org/npm 174ms (cache miss)
+33 timing command:run Completed in 267076ms
+34 notice
+34 notice New [33mminor[39m version of npm available! [31m10.2.4[39m -> [32m10.8.1[39m
+34 notice Changelog: [36mhttps://github.com/npm/cli/releases/tag/v10.8.1[39m
+34 notice Run [32mnpm install -g npm@10.8.1[39m to update!
+34 notice
+35 verbose exit 0
+36 timing npm Completed in 267185ms
+37 info ok
