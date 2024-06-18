@@ -171,20 +171,22 @@
                                 }"
                                 >Attend Quiz</router-link
                             >
-                            <router-link
-                                class="space-x-3"
-                                :to="{
-                                    name: 'quiz.edit',
-                                    params: { id: quiz.id },
-                                }"
-                                >Edit</router-link
-                            >
-                            <a
-                                href="#"
-                                @click.prevent="deleteQuiz(quiz.id)"
-                                class="ml-2"
-                                >Delete</a
-                            >
+                            <div class="" v-show="user.isAdmin">
+                                <router-link
+                                    class="space-x-3"
+                                    :to="{
+                                        name: 'quiz.edit',
+                                        params: { id: quiz.id },
+                                    }"
+                                    >Edit</router-link
+                                >
+                                <a
+                                    href="#"
+                                    @click.prevent="deleteQuiz(quiz.id)"
+                                    class="ml-2"
+                                    >Delete</a
+                                >
+                            </div>
                         </td>
                     </tr>
                 </tbody>
