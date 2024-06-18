@@ -1,12 +1,32 @@
 <template>
-    <form @submit.prevent="submitLogin">
+    <form @submit.prevent="submitRegister">
         <!-- Email -->
+        <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">
+                Name
+            </label>
+            <input
+                v-model="registerForm.name"
+                id="name"
+                type="text"
+                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                required
+                autofocus
+                autocomplete="username"
+            />
+            <!-- Validation Errors -->
+            <div class="mt-1 text-red-600">
+                <div v-for="message in validationErrors?.name">
+                    {{ message }}
+                </div>
+            </div>
+        </div>
         <div>
             <label for="email" class="block text-sm font-medium text-gray-700">
                 Email
             </label>
             <input
-                v-model="loginForm.email"
+                v-model="registerForm.email"
                 id="email"
                 type="email"
                 class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -31,7 +51,7 @@
                 Password
             </label>
             <input
-                v-model="loginForm.password"
+                v-model="registerForm.password"
                 id="password"
                 type="password"
                 class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -52,12 +72,13 @@
                 <input
                     type="checkbox"
                     name="remember"
-                    v-model="loginForm.remember"
+                    v-model="registerForm.remember"
                     class="text-indigo-600 border-gray-300 rounded shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
                 <span class="ml-2 text-sm text-gray-600">Remember me</span>
             </label>
         </div>
+
         <!-- Buttons -->
         <div class="flex items-center justify-start mt-4">
             <button
@@ -65,15 +86,15 @@
                 :class="{ 'opacity-25': processing }"
                 :disabled="processing"
             >
-                Login
+                Register
             </button>
         </div>
         <div class="flex justify-end">
-            <p class="p-1">Don't have account?</p>
+            <p class="p-1">Already have account?</p>
             <router-link
-                class="p-1 text-white bg-red-500 rounded-lg"
-                :to="{ name: 'register' }"
-                >Register</router-link
+                class="p-1 text-white bg-green-500 rounded-lg"
+                :to="{ name: 'login' }"
+                >Login</router-link
             >
         </div>
     </form>
@@ -82,5 +103,6 @@
 <script setup>
 import useAuth from "@/composables/auth";
 
-const { loginForm, validationErrors, processing, submitLogin } = useAuth();
+const { registerForm, validationErrors, processing, submitRegister } =
+    useAuth();
 </script>

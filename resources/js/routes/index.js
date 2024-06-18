@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import AuthenticatedLayout from "@/layouts/Authenticated.vue";
 import GuestLayout from "@/layouts/Guest.vue";
 import Login from "@/components/Auth/Login.vue";
+import Register from "@/components/Auth/Register.vue";
 
 import QuizIndex from "@/components/Quiz/Index.vue";
 import QuizCreate from "@/components/Quiz/Create.vue";
@@ -32,6 +33,11 @@ const routes = [
                 path: "/login",
                 name: "login",
                 component: Login,
+            },
+            {
+                path: "/register",
+                name: "register",
+                component: Register,
             },
         ],
     },

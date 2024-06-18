@@ -6,6 +6,12 @@ export default function useAuth() {
     const validationErrors = ref({});
     const swal = inject("$swal");
     const router = useRouter();
+    const registerForm = reactive({
+        name: "",
+        email: "",
+        password: "",
+        remember: false,
+    });
     const loginForm = reactive({
         email: "",
         password: "",
@@ -15,8 +21,28 @@ export default function useAuth() {
     const user = reactive({
         name: "",
         email: "",
-        isAdmin: false
+        isAdmin: false,
     });
+
+    const submitRegister = async () => {
+        if (processing.value) return;
+
+        processing.value = true;
+        validationErrors.value = {};
+
+        axios
+            .post("/register", registerForm)
+            .then(async (response) => {
+                router.push({ name: "login" });
+                loginUser(response);
+            })
+            .catch((error) => {
+                if (error.response?.data) {
+                    validationErrors.value = error.response.data.errors;
+                }
+            })
+            .finally(() => (processing.value = false));
+    };
 
     const submitLogin = async () => {
         if (processing.value) return;
@@ -71,9 +97,11 @@ export default function useAuth() {
 
     return {
         loginForm,
+        registerForm,
         validationErrors,
         processing,
         submitLogin,
+        submitRegister,
         user,
         getUser,
         logout,
