@@ -155,37 +155,41 @@
                         <td
                             class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap"
                         >
-                            <router-link
-                                class="px-2 py-1 mr-3 text-white bg-green-600 rounded-lg"
-                                :to="{
-                                    name: 'result-quiz',
-                                    params: { quizId: quiz.id },
-                                }"
-                                >Show Result</router-link
-                            >
-                            <router-link
-                                class="px-2 py-1 mr-3 text-white bg-red-400 rounded-lg"
-                                :to="{
-                                    name: 'attend-quiz',
-                                    params: { quizId: quiz.id },
-                                }"
-                                >Attend Quiz</router-link
-                            >
-                            <div class="" v-show="user.isAdmin">
-                                <router-link
-                                    class="space-x-3"
-                                    :to="{
-                                        name: 'quiz.edit',
-                                        params: { id: quiz.id },
-                                    }"
-                                    >Edit</router-link
-                                >
-                                <a
-                                    href="#"
-                                    @click.prevent="deleteQuiz(quiz.id)"
-                                    class="ml-2"
-                                    >Delete</a
-                                >
+                            <div class="flex space-x-1">
+                                <div class="space-x-1">
+                                    <router-link
+                                        class="px-2 py-1 text-white bg-green-600 rounded-lg"
+                                        :to="{
+                                            name: 'result-quiz',
+                                            params: { quizId: quiz.id },
+                                        }"
+                                        >Show Result</router-link
+                                    >
+                                    <router-link
+                                        class="px-2 py-1 text-white rounded-lg bg-amber-400"
+                                        :to="{
+                                            name: 'attend-quiz',
+                                            params: { quizId: quiz.id },
+                                        }"
+                                        >Attend Quiz</router-link
+                                    >
+                                </div>
+                                <div class="space-x-1" v-show="user.isAdmin">
+                                    <router-link
+                                        class="px-2 py-1 text-white bg-blue-400 rounded-lg"
+                                        :to="{
+                                            name: 'quiz.edit',
+                                            params: { id: quiz.id },
+                                        }"
+                                        >Edit</router-link
+                                    >
+                                    <a
+                                        href="#"
+                                        @click.prevent="deleteQuiz(quiz.id)"
+                                        class="px-2 py-1 text-white bg-red-400 rounded-lg"
+                                        >Delete</a
+                                    >
+                                </div>
                             </div>
                         </td>
                     </tr>
