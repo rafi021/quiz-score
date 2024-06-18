@@ -100,10 +100,46 @@
                             </div>
                         </th>
                         <th class="px-6 py-3 text-left bg-gray-50">
-                            <span
-                                class="text-xs font-medium leading-4 tracking-wider text-gray-500 uppercase"
-                                >Subject</span
+                            <div
+                                class="flex flex-row items-center justify-between cursor-pointer"
+                                @click="updateOrdering('subject_name')"
                             >
+                                <div
+                                    class="font-medium leading-4 tracking-wider text-gray-500 uppercase"
+                                    :class="{
+                                        'font-bold text-blue-600':
+                                            orderColumn === 'subject_name',
+                                    }"
+                                >
+                                    Subject
+                                </div>
+                                <div class="select-none">
+                                    <span
+                                        :class="{
+                                            'text-blue-600':
+                                                orderDirection === 'asc' &&
+                                                orderColumn === 'subject_name',
+                                            hidden:
+                                                orderDirection !== '' &&
+                                                orderDirection !== 'asc' &&
+                                                orderColumn === 'subject_name',
+                                        }"
+                                        >&uarr;</span
+                                    >
+                                    <span
+                                        :class="{
+                                            'text-blue-600':
+                                                orderDirection === 'desc' &&
+                                                orderColumn === 'subject_name',
+                                            hidden:
+                                                orderDirection !== '' &&
+                                                orderDirection !== 'desc' &&
+                                                orderColumn === 'subject_name',
+                                        }"
+                                        >&darr;</span
+                                    >
+                                </div>
+                            </div>
                         </th>
                         <th class="px-6 py-3 text-left bg-gray-50">
                             <span

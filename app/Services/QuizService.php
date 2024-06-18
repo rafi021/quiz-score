@@ -11,7 +11,7 @@ final class QuizService
 
         $orderColumn = request('order_column', 'quiz_date');
         $orderDirection = request('order_direction', 'desc');
-        if (!in_array($orderColumn, ['id', 'title', 'quiz_date'])) {
+        if (!in_array($orderColumn, ['id', 'title', 'quiz_date', 'subject_name'])) {
             $orderColumn = 'quiz_date';
         }
         if (!in_array($orderDirection, ['asc', 'desc'])) {
