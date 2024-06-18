@@ -31,7 +31,6 @@
         "VIEW_COMPILED_PATH": "/tmp",
 
         "DB_CONNECTION": "sqlite",
-        "DB_URL": "/database/database.sqlite",
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie"
