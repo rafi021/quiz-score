@@ -32,6 +32,7 @@ In this project, there are two profiles one is admin profile and another one is 
 
 4. Then create a .env file and generate key for this project using command
 ``` cp .env.example .env ```
+
 ``` php artisan key:generate ```
 
 5. Setup MYSQL from .env and use Sqlite (already stored in database folder named -- database.sqlite)
