@@ -88,4 +88,8 @@ php artisan serve
 
 Now you can login with admin credentials to manage quiz and questions and student credentials to attend quiz and get results.
 
+9. (Optional) Now you can login with admin credentials and add quiz first and then add questions to that quiz --see project images folder for steps
+
+10. (Optional) Now you can login with student credentials and attend quiz
+
 If you found any problem, please feel free to reach me.
