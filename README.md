@@ -109,6 +109,7 @@ Now you can login with admin credentials to manage quiz and questions and studen
 
 10. (Optional) Now you can login with student credentials and attend quiz
 
+![Screenshot](./project_images/student_quiz_1.png)
 ![Screenshot](./project_images/student_quiz_2.png)
 ![Screenshot](./project_images/student_quiz_3.png)
 ![Screenshot](./project_images/student_quiz_3a.png)
