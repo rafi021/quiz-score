@@ -64,6 +64,8 @@ class QuestionResultController extends Controller
 
     public function getResults(Request $request, $quizId)
     {
+        $user = $request->user();
+
         $orderColumn = request('order_column', 'score');
         $orderDirection = request('order_direction', 'desc');
         if (!in_array($orderColumn, ['id', 'score', 'created_at'])) {
@@ -72,10 +74,19 @@ class QuestionResultController extends Controller
         if (!in_array($orderDirection, ['asc', 'desc'])) {
             $orderDirection = 'desc';
         }
-        $results = QuizResult::where(['quiz_id' => $quizId])
-            ->with(['quiz:id,title,subject_name,quiz_date', 'student:id,name,email'])
-            ->orderBy($orderColumn, $orderDirection)
-            ->get();
+
+        if ($user->isAdmin) {
+            $results = QuizResult::where(['quiz_id' => $quizId])
+                ->with(['quiz:id,title,subject_name,quiz_date', 'student:id,name,email'])
+                ->orderBy($orderColumn, $orderDirection)
+                ->get();
+        } else {
+            $results = QuizResult::where(['quiz_id' => $quizId, 'user_id' => $user->id])
+                ->with(['quiz:id,title,subject_name,quiz_date', 'student:id,name,email'])
+                ->orderBy($orderColumn, $orderDirection)
+                ->get();
+        }
+
         return $this->ResponseSuccess($results);
     }
 }
