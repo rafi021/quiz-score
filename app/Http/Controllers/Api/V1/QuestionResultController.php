@@ -75,7 +75,7 @@ class QuestionResultController extends Controller
             $orderDirection = 'desc';
         }
 
-        if ($user->isAdmin) {
+        if ($user->is_admin) {
             $results = QuizResult::where(['quiz_id' => $quizId])
                 ->with(['quiz:id,title,subject_name,quiz_date', 'student:id,name,email'])
                 ->orderBy($orderColumn, $orderDirection)
